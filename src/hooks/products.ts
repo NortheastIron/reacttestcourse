@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {Products} from "../models";
+import {ProductsList} from "../models";
 
 export function useProducts() {
-    const [products, setProducts] = useState<Products[]>([]);
+    const [products, setProducts] = useState<ProductsList[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -14,7 +14,7 @@ export function useProducts() {
                 res.json().then((json) => {
                     setProducts(json);
                     setLoading(false);
-                })
+                });
             })
             .catch(err => {
                 console.log('err', err.message);

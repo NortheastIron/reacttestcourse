@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Products} from "../models";
+import {ProductsList} from "../models";
 
 interface ProductProps {
-    product: Products;
+    product: ProductsList;
     // key: any;
 }
 

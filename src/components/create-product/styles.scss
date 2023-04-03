@@ -1,0 +1,27 @@
+.create-product {
+  input {
+    width: 100%;
+    outline: none;
+    padding: 10px 15px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 10px 15px;
+    border: 1px solid #e5e7eb;
+    background-color: rgb(250,204,21);
+  }
+
+  button:hover {
+    color: #fff;
+  }
+
+  .disabled {
+    background-color: darkgray;
+  }
+
+  .disabled:hover {
+    color: #000;
+  }
+}
