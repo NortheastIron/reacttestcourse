@@ -1,7 +1,9 @@
 import React from "react";
 
+import './styles.scss';
+
 export function Loader() {
     return (
-        <p className='text-center'>Loading...</p>
+        <p className='loader'>Loading...</p>
     )
 }

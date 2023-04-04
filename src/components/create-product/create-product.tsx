@@ -15,7 +15,7 @@ const addDataExample: ProductsAdd = {
 export function CreateProduct() {
 
     const [value, setValue] = useState('');
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const submitHandler = (event: React.FormEvent) => {
@@ -30,7 +30,10 @@ export function CreateProduct() {
         fetch('https://fakestoreapi.com/products', {
             method: 'POST',
             body: JSON.stringify(data)
-        }).then(res => res.json()).then(json => console.log('res!', json));
+        }).catch((err) => {
+            setLoading(false);
+            throw err;
+        }).then(res => res.json());
     };
 
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => {

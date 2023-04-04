@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {ProductsList} from "../models";
+import {ProductsListT} from "../models";
 
 export function useProducts() {
-    const [products, setProducts] = useState<ProductsList[]>([]);
+    const [products, setProducts] = useState<ProductsListT[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -12,6 +12,7 @@ export function useProducts() {
         return fetch('https://fakestoreapi.com/products?limit=5')
             .then(res=>{
                 res.json().then((json) => {
+                    console.log('jss', json);
                     setProducts(json);
                     setLoading(false);
                 });

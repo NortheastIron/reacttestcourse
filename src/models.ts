@@ -3,7 +3,7 @@ export type ProductRating = {
     count: number;
 };
 
-export type ProductsList = {
+export type ProductsListT = {
     id: number;
     title: string;
     price: number;
