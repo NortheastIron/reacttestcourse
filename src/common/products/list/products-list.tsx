@@ -5,14 +5,23 @@ import './styles.scss';
 import {useProducts} from "../../../hooks/products";
 import {Loader} from "../../../components/loader/loader";
 import {ErrorMessage} from "../../../components/error-message/ErrorMessage";
+import {typedFastCopy} from "../../../utils";
 
 export function ProductsList() {
 
     const {loading, error, products} = useProducts();
     const [details, setDetails] = useState<number[]>([]);
 
-    // const btnBgClassName = details ? 'bg-blue-400' : 'bg-yellow-400';
-    // const btnClasses = [btnBgClassName];
+    function updateDetails(id: number) {
+        if (details.includes(id)) {
+            setDetails(details.filter(item => item !== id));
+        } else {
+            let temp: any = typedFastCopy(details);
+            temp.push(id);
+            setDetails(temp);
+        }
+    }
+
 
     return (
         <div className='products-list'>
@@ -24,11 +33,7 @@ export function ProductsList() {
                     <p>{product.title}</p>
                     <p className='price'>{product.price}</p>
                     <button className={details.includes(product.id) ? 'hide' : 'show'} onClick={() => {
-                        if (details.includes(product.id)) {
-                            setDetails([product.id]);
-                        } else {
-                            setDetails([product.id]);
-                        }
+                        updateDetails(product.id);
                     }}>{details.includes(product.id) ? 'Hide Details' : 'Show Details'}</button>
                     {details.includes(product.id) && <div>
                         {product.description}
@@ -37,8 +42,6 @@ export function ProductsList() {
                 </div>
                 )
             }
-
-            {/*{products.map(product => <Products product={product} key={product.id}/>)}*/}
         </div>
     );
 }
