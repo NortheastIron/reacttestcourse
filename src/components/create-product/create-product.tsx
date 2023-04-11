@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
 import './styles.scss';
-import {ProductsAdd} from "../../models";
 import {typedFastCopy} from "../../utils";
+import {ProductsAddT} from "../../common/products/services/types/ProductsAddT";
 
-const addDataExample: ProductsAdd = {
+const addDataExample: ProductsAddT = {
     title: 'test product',
     price: 13.5,
     description: 'lorem ipsum set',

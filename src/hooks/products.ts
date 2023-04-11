@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ProductsListT} from "../models";
+import {ProductsListT} from "../common/products/services/types/ProductsListT";
 
 export function useProducts() {
     const [products, setProducts] = useState<ProductsListT[]>([]);
