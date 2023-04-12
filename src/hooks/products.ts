@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {ProductsListT} from "../common/products/services/types/ProductsListT";
+import {ProductsDataProvider} from "../common/products/services/products.data-provider";
 
 export function useProducts() {
     const [products, setProducts] = useState<ProductsListT[]>([]);
@@ -9,6 +10,10 @@ export function useProducts() {
     async function fetchProducts() {
         setLoading(true);
         setError('');
+        const productDataProvider = new ProductsDataProvider();
+        productDataProvider.list().then(res => {
+            console.log('res', res);
+        });
         return fetch('https://fakestoreapi.com/products?limit=5')
             .then(res=>{
                 res.json().then((json) => {

@@ -37,7 +37,7 @@ export abstract class FirstDataProvider<ListObject = {}, InfoObject = {}, AddObj
     }
 
     public list(collectionParams: ICollectionParams = {}, resourceParams: IResourceParams = {}): Promise<ListObject[]> {
-        return fetch(this.updateUrl(resourceParams)).then(res => res.json());
+        return fetch(this.updateUrl(resourceParams, collectionParams)).then(res => res.json());
     }
 
     public get(resourceParams: IResourceParams = {}): Promise<InfoObject> {
@@ -58,20 +58,24 @@ export abstract class FirstDataProvider<ListObject = {}, InfoObject = {}, AddObj
         }).then(res => res.json());
     }
 
-    private updateUrl(params: IResourceParams = {}): string {
+    private updateUrl(resourceParams: IResourceParams = {}, collectionParams: ICollectionParams = {}): string {
         let result = this.apiUrl;
 
-        if (params) {
-            Object.keys(params).forEach((key) => {
-                let val = params[key];
+        if (resourceParams) {
+            Object.keys(resourceParams).forEach((key) => {
+                let val = resourceParams[key];
                 result = result.replace(new RegExp('{' + key + '}', 'g'), val);
             });
-            if (params.id && this.apiUrl.indexOf('{id}') === -1) {
+            if (resourceParams.id && this.apiUrl.indexOf('{id}') === -1) {
                 if (result[result.length - 1] !== '/') {
                     result += '/';
                 }
-                result += params.id;
+                result += resourceParams.id;
             }
+        }
+
+        if (collectionParams) {
+
         }
 
         return result;
