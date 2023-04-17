@@ -75,7 +75,27 @@ export abstract class FirstDataProvider<ListObject = {}, InfoObject = {}, AddObj
         }
 
         if (collectionParams) {
+            let colParArr: string[] = [];
 
+            if (collectionParams.filters) {
+                Object.keys(collectionParams.filters).forEach(key => {
+                    colParArr.push(`${key}=${collectionParams.filters && collectionParams.filters[key]}`);
+                });
+            }
+
+            if (collectionParams.pagination && collectionParams.pagination.limit) {
+                colParArr.push(`limit=${collectionParams.pagination.limit}`);
+            }
+
+            if (collectionParams.sorting) {
+                collectionParams.sorting.forEach(item => {
+                    colParArr.push(`sort=${item.field ? item.field + ',' + item.direction : item.direction}`)
+                });
+            }
+
+            if (colParArr.length !== 0) {
+                result += '?' + colParArr.join('&');
+            }
         }
 
         return result;

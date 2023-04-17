@@ -11,8 +11,20 @@ export interface IResourceParams {
 
 export interface ICollectionParams {
     filters?: IFilter;
+    pagination?: IPagination;
+    sorting?: ISorting[];
 }
 
 export interface IFilter {
-    [key: string]: any;
+    [others: string]: any;
+}
+
+export interface IPagination {
+    limit?: number;
+}
+
+export interface ISorting {
+    field?: string;
+    direction: string;
+    priority?: number;
 }

@@ -11,22 +11,28 @@ export function useProducts() {
         setLoading(true);
         setError('');
         const productDataProvider = new ProductsDataProvider();
-        productDataProvider.list().then(res => {
+        return productDataProvider.list({pagination: {limit: 5}}).then(res => {
             console.log('res', res);
+            setProducts(res);
+            setLoading(false);
+        }).catch(err => {
+            console.log('err', err.message);
+            setError(err.message);
+            setLoading(false);
         });
-        return fetch('https://fakestoreapi.com/products?limit=5')
-            .then(res=>{
-                res.json().then((json) => {
-                    console.log('jss', json);
-                    setProducts(json);
-                    setLoading(false);
-                });
-            })
-            .catch(err => {
-                console.log('err', err.message);
-                setError(err.message);
-                setLoading(false);
-            });
+        // return fetch('https://fakestoreapi.com/products?limit=5')
+        //     .then(res=>{
+        //         res.json().then((json) => {
+        //             console.log('jss', json);
+        //             setProducts(json);
+        //             setLoading(false);
+        //         });
+        //     })
+        //     .catch(err => {
+        //         console.log('err', err.message);
+        //         setError(err.message);
+        //         setLoading(false);
+        //     });
     }
 
     useEffect(() => {
