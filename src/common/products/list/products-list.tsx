@@ -1,15 +1,40 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import './styles.scss';
 
-import {useProducts} from "../../../hooks/products";
 import {Loader} from "../../../components/loader/loader";
 import {ErrorMessage} from "../../../components/error-message/ErrorMessage";
 import {typedFastCopy} from "../../../utils";
+import {ProductsListT} from "../services/types/ProductsListT";
+import {ProductsDataProvider} from "../services/products.data-provider";
 
 export function ProductsList() {
 
-    const {loading, error, products} = useProducts();
+    const productDataProvider = new ProductsDataProvider();
+    const [products, setProducts] = useState<ProductsListT[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    function fetchProducts() {
+        setLoading(true);
+        setError('');
+
+        return productDataProvider.list({pagination: {limit: 5}}).then(res => {
+            console.log('res', res);
+            setProducts(res);
+            setLoading(false);
+        }).catch(err => {
+            console.log('err', err.message);
+            setError(err.message);
+            setLoading(false);
+        });
+    }
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    // const {loading, error, products} = useProducts();
     const [details, setDetails] = useState<number[]>([]);
 
     function updateDetails(id: number) {

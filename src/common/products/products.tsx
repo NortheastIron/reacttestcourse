@@ -5,12 +5,12 @@ import './styles.scss';
 // import {ProductsListT} from "../../models";
 // import {useProducts} from "../../hooks/products";
 import {ProductsList} from "./list";
+import {Header} from "../../components/header/header";
 
 // interface ProductProps {
 //     product: ProductsListT;
     // key: any;
 // }
-
 
 export function Products() {
     // const {loading, error, products} = useProducts();
@@ -20,13 +20,13 @@ export function Products() {
         {products.map(product => <Products product={product} key={product.id}/>)}
     * */
 
-
     // const [details, setDetails] = useState(false);
     // console.log('props', product);
     // const btnBgClassName = details ? 'bg-blue-400' : 'bg-yellow-400';
     // const btnClasses = ['py-2 px-4 border', btnBgClassName];
     return (
         <div className='products'>
+            <Header/>
             <ProductsList/>
             {/*<img src={product.image} alt={product.title}/>*/}
             {/*<p>{product.title}</p>*/}
