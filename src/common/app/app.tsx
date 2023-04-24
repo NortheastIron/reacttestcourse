@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/css/test_fonts.css';
 
 import './styles.scss';
 

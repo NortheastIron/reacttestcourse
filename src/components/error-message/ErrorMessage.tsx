@@ -1,10 +1,10 @@
 import React from "react";
 
-type ErrorMessageProps = {
+interface IErrorMessageProps {
     error: string;
 }
 
-export function ErrorMessage({error}: ErrorMessageProps) {
+export function ErrorMessage({error}: IErrorMessageProps) {
     return (
         <p>{error}</p>
     )

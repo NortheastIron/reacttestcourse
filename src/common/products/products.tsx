@@ -26,7 +26,7 @@ export function Products() {
     // const btnClasses = ['py-2 px-4 border', btnBgClassName];
     return (
         <div className='products'>
-            <Header/>
+            <Header title='Products'/>
             <ProductsList/>
             {/*<img src={product.image} alt={product.title}/>*/}
             {/*<p>{product.title}</p>*/}

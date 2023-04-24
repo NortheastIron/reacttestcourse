@@ -1,12 +1,12 @@
 import React from "react";
 import './styles.scss';
 
-interface ModalProps {
+interface IModalProps {
     children: React.ReactNode;
     title: string;
 }
 
-export function Modal({children, title}: ModalProps) {
+export function Modal({children, title}: IModalProps) {
     return (
         <>{/*это фрагмент ... чтобы объединить теги ..реактовская тема*/}
             <div className='modal__hide'></div>

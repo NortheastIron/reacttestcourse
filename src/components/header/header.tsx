@@ -2,10 +2,17 @@ import React from "react";
 
 import './styles.scss';
 
-export function Header() {
+interface IHeaderProps {
+    title: string;
+}
 
-
+export function Header({title}: IHeaderProps) {
     return (
-        <div className='header'></div>
+        <div className='header'>
+            <i className='icon i-left'></i>
+            <div className='title'>
+                <span>{title}</span>
+            </div>
+        </div>
     );
 }
