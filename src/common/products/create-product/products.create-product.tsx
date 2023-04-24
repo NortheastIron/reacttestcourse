@@ -28,7 +28,9 @@ export function ProductsCreateProduct() {
         const data = typedFastCopy(addDataExample);
         data.title = value;
 
-        return productDataProvider.add(data);
+        return productDataProvider.add(data).catch(() => {
+            setLoading(false);
+        });
     };
 
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => {

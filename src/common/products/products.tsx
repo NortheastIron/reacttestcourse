@@ -6,6 +6,8 @@ import './styles.scss';
 // import {useProducts} from "../../hooks/products";
 import {ProductsList} from "./list";
 import {Header} from "../../components/header/header";
+import {Modal} from "../../components/modal/modal";
+import {ProductsCreateProduct} from "./create-product/products.create-product";
 
 // interface ProductProps {
 //     product: ProductsListT;
@@ -28,6 +30,9 @@ export function Products() {
         <div className='products'>
             <Header title='Products'/>
             <ProductsList/>
+            <Modal title='Create product'>
+                <ProductsCreateProduct/>
+            </Modal>
             {/*<img src={product.image} alt={product.title}/>*/}
             {/*<p>{product.title}</p>*/}
             {/*<p className='price'>{product.price}</p>*/}
