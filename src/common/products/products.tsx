@@ -21,7 +21,6 @@ export function Products() {
         {error && <ErrorMessage error={error}/>}
         {products.map(product => <Products product={product} key={product.id}/>)}
     * */
-
     // const [details, setDetails] = useState(false);
     // console.log('props', product);
     // const btnBgClassName = details ? 'bg-blue-400' : 'bg-yellow-400';
@@ -30,9 +29,7 @@ export function Products() {
         <div className='products'>
             <Header title='Products'/>
             <ProductsList/>
-            <Modal title='Create product'>
-                <ProductsCreateProduct/>
-            </Modal>
+
             {/*<img src={product.image} alt={product.title}/>*/}
             {/*<p>{product.title}</p>*/}
             {/*<p className='price'>{product.price}</p>*/}

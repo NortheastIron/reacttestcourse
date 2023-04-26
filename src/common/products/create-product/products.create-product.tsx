@@ -13,7 +13,11 @@ const addDataExample: ProductsAddT = {
     category: 'electronic'
 };
 
-export function ProductsCreateProduct() {
+interface IProductsCreateProduct {
+    onCreate: (res: any) => void;
+}
+
+export function ProductsCreateProduct({onCreate}: IProductsCreateProduct) {
 
     const productDataProvider = new ProductsDataProvider();
     const [value, setValue] = useState('');
@@ -28,7 +32,9 @@ export function ProductsCreateProduct() {
         const data = typedFastCopy(addDataExample);
         data.title = value;
 
-        return productDataProvider.add(data).catch(() => {
+        return productDataProvider.add(data).then((res) => {
+            onCreate(res);
+        }).catch(() => {
             setLoading(false);
         });
     };

@@ -7,6 +7,8 @@ import {ErrorMessage} from "../../../components/error-message/ErrorMessage";
 import {typedFastCopy} from "../../../utils";
 import {ProductsListT} from "../services/types/ProductsListT";
 import {ProductsDataProvider} from "../services/products.data-provider";
+import {Modal} from "../../../components/modal/modal";
+import {ProductsCreateProduct} from "../create-product/products.create-product";
 
 export function ProductsList() {
 
@@ -14,6 +16,12 @@ export function ProductsList() {
     const [products, setProducts] = useState<ProductsListT[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [modal, setModal] = useState(true);
+
+    const createHandler = (res: any) => {
+        console.log('rrr', res);
+        setModal(false);
+    };
 
     function fetchProducts() {
         setLoading(true);
@@ -49,25 +57,40 @@ export function ProductsList() {
 
 
     return (
-        <div className='products-list'>
-            {loading && <Loader />}
-            {error && <ErrorMessage error={error}/>}
-            {
-                products.map(product => <div className='products-list__item' key={product.id}>
-                    <img src={product.image} alt={product.title}/>
-                    <p>{product.title}</p>
-                    <p className='price'>{product.price}</p>
-                    <button className={details.includes(product.id) ? 'hide' : 'show'} onClick={() => {
-                        updateDetails(product.id);
-                    }}>{details.includes(product.id) ? 'Hide Details' : 'Show Details'}</button>
-                    {details.includes(product.id) && <div>
-                        {product.description}
-                        <p> Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
-                    </div>}
+        <>
+            {modal && <Modal title='Create product'>
+                <ProductsCreateProduct onCreate={createHandler}/>
+            </Modal>}
+            <div className='products-list'>
+                <div className='products-list__management'>
+                    <div className='buttons-line'>
+
+                    </div>
+                    <div className='filters-line'>
+
+                    </div>
                 </div>
-                )
-            }
-        </div>
+                <div className='products-list__list'>
+                    {loading && <Loader />}
+                    {error && <ErrorMessage error={error}/>}
+                    {
+                        products.map(product => <div className='products-list__list__item' key={product.id}>
+                                <img src={product.image} alt={product.title}/>
+                                <p>{product.title}</p>
+                                <p className='price'>{product.price}</p>
+                                <button className={details.includes(product.id) ? 'hide' : 'show'} onClick={() => {
+                                    updateDetails(product.id);
+                                }}>{details.includes(product.id) ? 'Hide Details' : 'Show Details'}</button>
+                                {details.includes(product.id) && <div>
+                                    {product.description}
+                                    <p> Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
+                                </div>}
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </>
     );
 }
 
