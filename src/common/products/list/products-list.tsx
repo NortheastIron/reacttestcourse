@@ -55,6 +55,12 @@ export function ProductsList() {
         }
     }
 
+    function onCreateProduct() {
+        if (!modal) {
+            setModal(true);
+        }
+    }
+
 
     return (
         <>
@@ -64,10 +70,12 @@ export function ProductsList() {
             <div className='products-list'>
                 <div className='products-list__management'>
                     <div className='buttons-line'>
-
+                        <button onClick={onCreateProduct}>Create product</button>
                     </div>
                     <div className='filters-line'>
+                        <div>
 
+                        </div>
                     </div>
                 </div>
                 <div className='products-list__list'>

@@ -3,11 +3,18 @@
   &__management {
 
     .buttons-line {
-      height: 50px;
+      display: flex;
+      align-items: center;
+      height: 70px;
+      padding: 10px 20px;
+
+      >button {
+        background-color: #facc15;
+      }
     }
 
     .filters-line {
-      height: 50px;
+      height: 70px;
     }
   }
 
@@ -31,12 +38,6 @@
 
       .price {
         font-weight: 700;
-      }
-
-      button {
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid #e5e7eb;
       }
 
       .show {
