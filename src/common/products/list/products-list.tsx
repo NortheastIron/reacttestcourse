@@ -61,10 +61,16 @@ export function ProductsList() {
         }
     }
 
+    function modalActionWatcher(res: string) {
+        if (res === 'close' && modal) {
+            setModal(false);
+        }
+    }
+
 
     return (
         <>
-            {modal && <Modal title='Create product'>
+            {modal && <Modal title='Create product' actionWatch={modalActionWatcher}>
                 <ProductsCreateProduct onCreate={createHandler}/>
             </Modal>}
             <div className='products-list'>
