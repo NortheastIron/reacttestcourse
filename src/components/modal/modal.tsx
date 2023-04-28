@@ -1,16 +1,23 @@
 import React from "react";
 import './styles.scss';
 
-interface IModalProps {
-    children: React.ReactNode;
-    title: string;
-    actionWatch: any;
+export enum ModalActionsEnum {
+    close = 'close'
 }
 
-export function Modal({children, title, actionWatch}: IModalProps) {
+export interface IModalProps {
+    children: React.ReactNode;
+    title: string;
+    actionWatch: (action: string) => void;
+    disabled?: boolean;
+}
+
+export function Modal({children, title, actionWatch, disabled = false}: IModalProps) {
 
     function onClose() {
-        actionWatch('close');
+        if (!disabled) {
+            actionWatch('close');
+        }
     }
 
 
@@ -20,7 +27,7 @@ export function Modal({children, title, actionWatch}: IModalProps) {
             <div className='modal__message'>
                 <div className='modal__message__header'>
                     <span className='modal__message__header__title'>{title}</span>
-                    <i className='icon i-cancel' onClick={onClose}></i>
+                    <i className={`icon i-cancel ${disabled ? 'disabled' : ''}`} onClick={onClose}></i>
                 </div>
                 <div className='modal__message__content'>
                     {children}

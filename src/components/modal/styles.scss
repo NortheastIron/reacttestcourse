@@ -45,6 +45,14 @@
       .icon:hover {
         color: #333d4c;
       }
+
+      .icon.disabled {
+        cursor: default;
+      }
+
+      .icon.disabled:hover {
+        color: #707d91;
+      }
     }
 
     &__content {

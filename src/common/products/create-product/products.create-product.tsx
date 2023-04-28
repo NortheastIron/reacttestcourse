@@ -14,7 +14,7 @@ const addDataExample: ProductsAddT = {
 };
 
 interface IProductsCreateProduct {
-    onCreate: (res: any) => void;
+    onCreate: () => void;
 }
 
 export function ProductsCreateProduct({onCreate}: IProductsCreateProduct) {
@@ -33,7 +33,7 @@ export function ProductsCreateProduct({onCreate}: IProductsCreateProduct) {
         data.title = value;
 
         return productDataProvider.add(data).then((res) => {
-            onCreate(res);
+            onCreate();
         }).catch(() => {
             setLoading(false);
         });
