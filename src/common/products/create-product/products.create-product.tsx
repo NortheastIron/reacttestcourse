@@ -15,9 +15,10 @@ const addDataExample: ProductsAddT = {
 
 interface IProductsCreateProduct {
     onCreate: () => void;
+    actionWatch: (action: string) => void;
 }
 
-export function ProductsCreateProduct({onCreate}: IProductsCreateProduct) {
+export function ProductsCreateProduct({onCreate, actionWatch}: IProductsCreateProduct) {
 
     const productDataProvider = new ProductsDataProvider();
     const [value, setValue] = useState('');
@@ -31,11 +32,12 @@ export function ProductsCreateProduct({onCreate}: IProductsCreateProduct) {
 
         const data = typedFastCopy(addDataExample);
         data.title = value;
-
+        actionWatch('submit');
         return productDataProvider.add(data).then((res) => {
             onCreate();
         }).catch(() => {
             setLoading(false);
+            actionWatch('stop');
         });
     };
 

@@ -16,10 +16,12 @@ export function ProductsList() {
     const [products, setProducts] = useState<ProductsListT[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [modal, setModal] = useState(true);
+    const [modal, setModal] = useState(false);
+    const [submitProduct, setSubmitProduct] = useState(false);
 
     const createHandler = () => {
         setModal(false);
+        setSubmitProduct(false);
     };
 
     function fetchProducts() {
@@ -67,13 +69,18 @@ export function ProductsList() {
     }
 
     function createProductActionWatcher(res: string) {
-
+        console.log('res', res);
+        if (res === 'submit') {
+            setSubmitProduct(true);
+        } else if (res === 'stop') {
+            setSubmitProduct(false);
+        }
     }
 
 
     return (
         <>
-            {modal && <Modal title='Create product' disabled={true} actionWatch={modalActionWatcher}>
+            {modal && <Modal title='Create product' disabled={submitProduct} actionWatch={modalActionWatcher}>
                 <ProductsCreateProduct onCreate={createHandler} actionWatch={createProductActionWatcher}/>
             </Modal>}
             <div className='products-list'>
