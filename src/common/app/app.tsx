@@ -4,17 +4,21 @@ import './styles.scss';
 
 import {Modal} from "../../components/modal/modal";
 import {Products} from "../products";
+import {Routes, Route} from "react-router-dom";
+export function App({}: {children?: JSX.Element|JSX.Element[]}) {
+    const modules = ['products', 'news'];
 
-export function App() {
+    return (
+        <>
+        <div className="app">
+            {
+                modules.forEach(module => {
 
-  return (
-    <div className="app">
-        <Products/>
-        {/*<Modal title='Create product'>*/}
-        {/*    <CreateProduct/>*/}
-        {/*</Modal>*/}
-    </div>
-  );
+                });
+            }
+        </div>
+        </>
+      );
 
   // return React.createElement('div', {}, [
   //     e('h1', {className: 'font-bold', key: 1}, `TEST, ${count}`),
