@@ -1,17 +1,30 @@
 import React from "react";
+import {useNavigate} from 'react-router-dom';
 
 import './styles.scss';
 
-interface IHeaderProps {
+export interface IHeaderConfig {
     title: string;
+    backLink: string;
 }
 
-export function Header({title}: IHeaderProps) {
+interface IHeaderProps {
+    headerConfig: IHeaderConfig;
+}
+
+export function Header({headerConfig}: IHeaderProps) {
+
+    const navigate = useNavigate();
+
+    function onBackClick() {
+        navigate(headerConfig.backLink);
+    }
+
     return (
         <div className='header'>
-            <i className='icon i-left'></i>
+            <i className='icon i-left' onClick={onBackClick}></i>
             <div className='title'>
-                <span>{title}</span>
+                <span>{headerConfig.title}</span>
             </div>
         </div>
     );

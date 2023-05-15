@@ -5,17 +5,21 @@ import './styles.scss';
 import {Modal} from "../../components/modal/modal";
 import {Products} from "../products";
 import {Routes, Route} from "react-router-dom";
-export function App({}: {children?: JSX.Element|JSX.Element[]}) {
+export function App() {
     const modules = ['products', 'news'];
 
     return (
         <>
-        <div className="app">
-            {
-                modules.forEach(module => {
+        <div className='app'>
+            <div className='app__modules'>
+                {
+                    modules && modules.map(module =>
+                        <div>
 
-                });
-            }
+                        </div>
+                    )
+                }
+            </div>
         </div>
         </>
       );

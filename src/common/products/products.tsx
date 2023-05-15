@@ -5,7 +5,7 @@ import './styles.scss';
 // import {ProductsListT} from "../../models";
 // import {useProducts} from "../../hooks/products";
 import {ProductsList} from "./list";
-import {Header} from "../../components/header/header";
+import {Header, IHeaderConfig} from "../../components/header/header";
 import {Modal} from "../../components/modal/modal";
 import {ProductsCreateProduct} from "./create-product/products.create-product";
 
@@ -25,9 +25,14 @@ export function Products() {
     // console.log('props', product);
     // const btnBgClassName = details ? 'bg-blue-400' : 'bg-yellow-400';
     // const btnClasses = ['py-2 px-4 border', btnBgClassName];
+    const headerConfig: IHeaderConfig = {
+        title: 'Products',
+        backLink: '/'
+    };
+
     return (
         <div className='products'>
-            <Header title='Products'/>
+            <Header headerConfig={headerConfig}/>
             <ProductsList/>
 
             {/*<img src={product.image} alt={product.title}/>*/}
