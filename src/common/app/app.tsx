@@ -1,26 +1,32 @@
 import React from 'react';
+import {Routes, Route} from 'react-router-dom';
 
 import './styles.scss';
-
-import {Modal} from "../../components/modal/modal";
 import {Products} from "../products";
-import {Routes, Route} from "react-router-dom";
+
 export function App() {
     const modules = ['products', 'news'];
 
     return (
         <>
-        <div className='app'>
-            <div className='app__modules'>
-                {
-                    modules && modules.map(module =>
-                        <div>
+            <div className='app'>
+                <div className='app__header'>
 
-                        </div>
-                    )
-                }
+                </div>
+                <div className='app__main'>
+                    {
+                        modules && modules.map((module, index) =>
+                            <div key={index}>
+
+                            </div>
+                        )
+                    }
+                </div>
             </div>
-        </div>
+            <Routes>
+                <Route path='/products'  element={<Products/>}/>
+                <Route path='/news' element={<div>NEWS</div>}/>
+            </Routes>
         </>
       );
 

@@ -1,13 +1,9 @@
-import React, {useState} from "react";
+import React from 'react';
 
 import './styles.scss';
 
-// import {ProductsListT} from "../../models";
-// import {useProducts} from "../../hooks/products";
-import {ProductsList} from "./list";
-import {Header, IHeaderConfig} from "../../components/header/header";
-import {Modal} from "../../components/modal/modal";
-import {ProductsCreateProduct} from "./create-product/products.create-product";
+import {ProductsList} from './list';
+import {Header, IHeaderConfig} from '../../components/header/header';
 
 // interface ProductProps {
 //     product: ProductsListT;

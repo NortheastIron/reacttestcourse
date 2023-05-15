@@ -1,4 +1,4 @@
-import {ProductRating} from "./ProductRatingT";
+import {ProductRating} from './ProductRatingT';
 
 export type ProductsInfoT = {
     id: number;

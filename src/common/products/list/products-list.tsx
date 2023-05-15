@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react';
 
 import './styles.scss';
 
-import {Loader} from "../../../components/loader/loader";
-import {ErrorMessage} from "../../../components/error-message/ErrorMessage";
-import {typedFastCopy} from "../../../utils";
-import {ProductsListT} from "../services/types/ProductsListT";
-import {ProductsDataProvider} from "../services/products.data-provider";
-import {Modal} from "../../../components/modal/modal";
-import {ProductsCreateProduct} from "../create-product/products.create-product";
+import {Loader} from '../../../components/loader/loader';
+import {ErrorMessage} from '../../../components/error-message/ErrorMessage';
+import {typedFastCopy} from '../../../utils';
+import {ProductsListT} from '../services/types/ProductsListT';
+import {ProductsDataProvider} from '../services/products.data-provider';
+import {Modal} from '../../../components/modal/modal';
+import {ProductsCreateProduct} from '../create-product/products.create-product';
 
 export function ProductsList() {
 

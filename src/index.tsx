@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/css/test_fonts.css';
-import App from "./common/app/app";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {Products} from "./common/products";
+import App from './common/app/app';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Products} from './common/products';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,8 +14,9 @@ root.render(
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<App/>}/>
-            <Route path='/products'  element={<Products/>}/>
-            <Route path='/news' element={<div></div>}/>
+            <Route path='/login' element={<div>LOGIN</div>}/>
+            {/*<Route path='/products'  element={<Products/>}/>*/}
+            {/*<Route path='/news' element={<div></div>}/>*/}
         </Routes>
     </BrowserRouter>
   //</React.StrictMode>

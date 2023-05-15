@@ -1,7 +1,6 @@
-import {useEffect, useState} from "react";
-import {ICollectionParams, IResourceParams} from "./models";
-import {MethodsRequest} from "./enums";
-// import {IRequestParams} from "./models";
+import {useEffect, useState} from 'react';
+import {ICollectionParams, IResourceParams} from './models';
+import {MethodsRequest} from './enums';
 
 export interface IFirstDataProvider<ListObject, InfoObject, AddObject, UpdateObject> {
     setApiUrl(url: string): void;

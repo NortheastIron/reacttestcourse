@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 
 import './styles.scss';
-import {typedFastCopy} from "../../../utils";
-import {ProductsAddT} from "../services/types/ProductsAddT";
-import {ProductsDataProvider} from "../services/products.data-provider";
+import {typedFastCopy} from '../../../utils';
+import {ProductsAddT} from '../services/types/ProductsAddT';
+import {ProductsDataProvider} from '../services/products.data-provider';
 
 const addDataExample: ProductsAddT = {
     title: 'test product',

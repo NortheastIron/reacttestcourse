@@ -1,10 +1,10 @@
-import {FirstDataProvider, IFirstDataProvider} from "../../../utils/data-provider/first-data-provider";
+import {FirstDataProvider, IFirstDataProvider} from '../../../utils/data-provider/first-data-provider';
 import {
     ProductsListT,
     ProductsInfoT,
     ProductsAddT,
     ProductsUpdateT
-} from "./types";
+} from './types';
 
 export interface IProductsDataProvider extends IFirstDataProvider<ProductsListT, ProductsInfoT, ProductsAddT, ProductsUpdateT> {}
 
