@@ -2,10 +2,11 @@ import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import './styles.scss';
-import {Products} from "../products";
+// import {Products} from "../products";
+import {MainContainer} from "../main-container";
 
 export function App() {
-    const modules = ['products', 'news'];
+    // const modules = ['products', 'news'];
 
     return (
         <>
@@ -14,19 +15,20 @@ export function App() {
 
                 </div>
                 <div className='app__main'>
-                    {
-                        modules && modules.map((module, index) =>
-                            <div key={index}>
+                    <MainContainer/>
+                    {/*{*/}
+                    {/*    modules && modules.map((module, index) =>*/}
+                    {/*        <div key={index}>*/}
 
-                            </div>
-                        )
-                    }
+                    {/*        </div>*/}
+                    {/*    )*/}
+                    {/*}*/}
                 </div>
             </div>
-            <Routes>
-                <Route path='/products'  element={<Products/>}/>
-                <Route path='/news' element={<div>NEWS</div>}/>
-            </Routes>
+            {/*<Routes>*/}
+            {/*    <Route path='/products'  element={<Products/>}/>*/}
+            {/*    <Route path='/news' element={<div>NEWS</div>}/>*/}
+            {/*</Routes>*/}
         </>
       );
 
