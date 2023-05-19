@@ -3,8 +3,8 @@ import {Routes, Route} from 'react-router-dom';
 
 import './styles.scss';
 
-import {Products} from "../products";
-import {Menu} from "../menu";
+import {Products} from '../products';
+import {Menu} from '../menu';
 
 export function MainContainer() {
     return (

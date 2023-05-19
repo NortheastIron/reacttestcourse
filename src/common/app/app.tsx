@@ -12,7 +12,6 @@ export function App() {
         <>
             <div className='app'>
                 <div className='app__header'>
-
                 </div>
                 <div className='app__main'>
                     <MainContainer/>
