@@ -9,7 +9,6 @@ type ModulesType = {
     title: string;
     icon: string;
     path: string;
-    // color?: string;
 };
 
 const modules: ModulesType[] = [
@@ -51,7 +50,7 @@ export function Menu() {
                 modules.map(module =>
                     <div className={`module module__${module.name}`} onClick={() => {openModule(module.path)}} key={module.id}>
                         <div className='module__title'>
-                            <span >{module.title}</span>
+                            <span>{module.title}</span>
                         </div>
                         <i className={`module__icon icon ${module.icon}`}></i>
                     </div>

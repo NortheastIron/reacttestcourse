@@ -1,6 +1,10 @@
 .products-list {
+  height: 100%;
+  max-height: 100%;
 
   &__management {
+
+    height: 70px;
 
     .buttons-line {
       display: flex;
@@ -23,22 +27,43 @@
   }
 
   &__list {
-    max-width: 50%;
     margin: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
+    height: calc(100% - 70px);
 
     &__item {
       display: flex;
       flex-flow: column;
-      align-items: center;
+      justify-content: space-between;
+      height: 210px;
+      width: 210px;
+      float: left;
       padding: 10px;
       margin-bottom: 10px;
+      margin-right: 10px;
       border: 1px solid #e5e7eb;
 
-      img {
-        width: 15%;
+      &__top {
+        height: 70%;
+        display: flex;
+
+        &__left {
+          width: 50%;
+          img {
+            width: 50%;
+          }
+        }
+
+        &__right {
+          width: 50%;
+        }
       }
+
+      &__bottom {
+        height: 30%;
+      }
+
+
 
       .price {
         font-weight: 700;
