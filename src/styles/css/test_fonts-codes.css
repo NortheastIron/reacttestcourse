@@ -11,8 +11,11 @@
 .i-trash-empty:before { content: '\e809'; } /* '' */
 .i-wrench:before { content: '\e80a'; } /* '' */
 .i-left-big:before { content: '\e80b'; } /* '' */
+.i-globe:before { content: '\e80c'; } /* '' */
 .i-mail-alt:before { content: '\f0e0'; } /* '' */
 .i-info:before { content: '\f129'; } /* '' */
 .i-left:before { content: '\f177'; } /* '' */
+.i-box:before { content: '\f187'; } /* '' */
 .i-sliders:before { content: '\f1de'; } /* '' */
 .i-trash:before { content: '\f1f8'; } /* '' */
+.i-whatsapp:before { content: '\f232'; } /* '' */

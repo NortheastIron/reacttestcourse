@@ -13,6 +13,7 @@ export function MainContainer() {
                 <Route path='/' element={<Menu/>}/>
                 <Route path='/products'  element={<Products/>}/>
                 <Route path='/news' element={<div>NEWS</div>}/>
+                <Route path='/chat' element={<div>CHAT</div>}/>
             </Routes>
         </div>
     );

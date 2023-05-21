@@ -6,6 +6,7 @@ type ModulesType = {
     id: number;
     name: string;
     title: string;
+    icon: string;
     // color?: string;
 };
 
@@ -13,13 +14,20 @@ const modules: ModulesType[] = [
     {
         id: 0,
         name: 'products',
-        title: 'Products'
+        title: 'Products',
+        icon: 'i-box'
     },
     {
         id: 1,
         name: 'news',
         title: 'News',
-
+        icon: 'i-globe'
+    },
+    {
+        id: 2,
+        name: 'chat',
+        title: 'Chat',
+        icon: 'i-whatsapp'
     }
 ];
 
@@ -29,8 +37,10 @@ export function Menu() {
             {
                 modules.map(module =>
                     <div className={`module module__${module.name}`} key={module.id}>
-                        <span className='module__title'>{module.name}</span>
-                        <span className='module__icon'>ICON</span>
+                        <div className='module__title'>
+                            <span >{module.title}</span>
+                        </div>
+                        <i className={`module__icon icon ${module.icon}`}></i>
                     </div>
                 )
             }
