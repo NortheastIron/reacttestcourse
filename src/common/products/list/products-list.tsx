@@ -10,6 +10,12 @@ import {Modal} from '../../../components/modal/modal';
 import {ProductsCreateProduct} from '../create-product/products.create-product';
 import {ProductsDetails} from "../details";
 
+// interface IFormState {
+//     name: string;
+//     id?: number;
+//     title: string;
+// }
+
 export function ProductsList() {
 
     const productDataProvider = new ProductsDataProvider();
@@ -20,6 +26,7 @@ export function ProductsList() {
     const [submitProduct, setSubmitProduct] = useState(false);
     const [formVisible, setFormVisible] = useState<string>('');
     const [detailsId, setDetailsId] = useState<number>(0);
+    // const [formState, setFormState] = useState<IFormState | null>(null);
 
     const createHandler = () => {
         setModal(false);
@@ -44,6 +51,10 @@ export function ProductsList() {
         // if (formVisible === 'create') {
         //     return;
         // }
+        // const tempState = {
+        //     name: 'details',
+        //     id: formState && formState.id || id,
+        // };
         setFormVisible('details');
 
         const tempId = detailsId || id;
@@ -70,7 +81,6 @@ export function ProductsList() {
     }
 
     function createProductActionWatcher(res: string) {
-        console.log('res', res);
         if (res === 'submit') {
             setSubmitProduct(true);
         } else if (res === 'stop') {
