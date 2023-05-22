@@ -4,11 +4,11 @@ import './styles.scss';
 
 import {Loader} from '../../../components/loader/loader';
 import {ErrorMessage} from '../../../components/error-message/ErrorMessage';
-import {typedFastCopy} from '../../../utils';
 import {ProductsListT} from '../services/types/ProductsListT';
 import {ProductsDataProvider} from '../services/products.data-provider';
 import {Modal} from '../../../components/modal/modal';
 import {ProductsCreateProduct} from '../create-product/products.create-product';
+import {ProductsDetails} from "../details";
 
 export function ProductsList() {
 
@@ -18,7 +18,8 @@ export function ProductsList() {
     const [error, setError] = useState('');
     const [modal, setModal] = useState(false);
     const [submitProduct, setSubmitProduct] = useState(false);
-    const [details, setDetails] = useState<number[]>([]);
+    const [formVisible, setFormVisible] = useState<string>('');
+    const [detailsId, setDetailsId] = useState<number>(0);
 
     const createHandler = () => {
         setModal(false);
@@ -34,33 +35,38 @@ export function ProductsList() {
             setProducts(res);
             setLoading(false);
         }).catch(err => {
-            console.log('err', err.message);
             setError(err.message);
             setLoading(false);
         });
     }
 
-    function updateDetails(id: number) {
-        if (details.includes(id)) {
-            setDetails(details.filter(item => item !== id));
-        } else {
-            let temp: any = typedFastCopy(details);
-            temp.push(id);
-            setDetails(temp);
-        }
+    function showDetails(id: number) {
+        // if (formVisible === 'create') {
+        //     return;
+        // }
+        setFormVisible('details');
+
+        const tempId = detailsId || id;
+        setDetailsId(tempId);
+        setModal(true);
     }
 
     function onCreateProduct() {
-        if (!modal) {
-            setModal(true);
-        }
+        // if (formVisible === 'details') {
+        //     return;
+        // }
+        setFormVisible('create');
+        setModal(true);
     }
 
     function modalActionWatcher(res: string) {
         if (res === 'close' && modal) {
             setModal(false);
+            if (formVisible === 'details') {
+                setDetailsId(0);
+            }
+            setFormVisible('');
         }
-        // console.log('resM', res);
     }
 
     function createProductActionWatcher(res: string) {
@@ -79,18 +85,17 @@ export function ProductsList() {
     return (
         <>
             {modal && <Modal title='Create product' disabled={submitProduct} actionWatch={modalActionWatcher}>
-                <ProductsCreateProduct onCreate={createHandler} actionWatch={createProductActionWatcher}/>
+                {
+                    formVisible && (formVisible === 'create')
+                        ? <ProductsCreateProduct onCreate={createHandler} actionWatch={createProductActionWatcher}/>
+                        : <ProductsDetails id={detailsId}/>
+                }
             </Modal>}
             <div className='products-list'>
                 <div className='products-list__management'>
                     <div className='buttons-line'>
-                        <button onClick={onCreateProduct}>Create product</button>
+                        <button className='active-button' onClick={onCreateProduct}>Create product</button>
                     </div>
-                    {/*<div className='filters-line'>*/}
-                    {/*    <div>*/}
-                    {/**/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
                 <div className='products-list__list'>
                     {loading && <Loader />}
@@ -108,14 +113,20 @@ export function ProductsList() {
                                 </div>
                                 <div className='products-list__list__item__bottom'>
                                     <p className='price'>{product.price}</p>
-                                    <button className={details.includes(product.id) ? 'hide' : 'show'} onClick={() => {
-                                        updateDetails(product.id);
-                                    }}>{details.includes(product.id) ? 'Hide Details' : 'Show Details'}</button>
+                                    <button className='active-button' onClick={() => {
+                                        showDetails(product.id);
+                                    }}>Details</button>
                                 </div>
-                                {details.includes(product.id) && <div>
-                                    {product.description}
-                                    <p> Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
-                                </div>}
+                                {/*<div className='products-list__list__item__bottom'>*/}
+                                {/*    <p className='price'>{product.price}</p>*/}
+                                {/*    <button className={details.includes(product.id) ? 'hide' : 'show'} onClick={() => {*/}
+                                {/*        showDetails(product.id);*/}
+                                {/*    }}>{details.includes(product.id) ? 'Hide Details' : 'Details'}</button>*/}
+                                {/*</div>*/}
+                                {/*{details.includes(product.id) && <div>*/}
+                                {/*    {product.description}*/}
+                                {/*    <p> Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>*/}
+                                {/*</div>}*/}
                             </div>
                         )
                     }
